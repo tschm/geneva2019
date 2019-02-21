@@ -1,0 +1,46 @@
+Title:
+
+Flowing flowingly with the flowing flow
+How to survive as a lazy data scientist.
+
+
+
+I assume/hope a few of you are not interested in finance. But my talk is hopefully useful for everybody working with data and people.
+
+
+Let's go back to 2007:
+- I got my PhD (mathematics) in 2007. I was 12 years younger than I am today (in fact, we all are)
+- It was the year the first IPhone was released! Today my IPhone 8 feels very, very old
+- George W. Bush was president. Back then we all assumed there is no chance there will ever be a worse president than Bush 
+- And there was no Github, no Docker...
+- The idea of sharing your work with the world was insane... 
+
+
+Sharing meant printing code fragments into a paper. 
+---------------------------------------------------
+
+
+- Who is on Github? I am. Please follow me: tschm
+
+- Have we heard of Docker?
+
+- Who is maintaining a private server, e.g. an AWS server
+
+- What's the result of all your efforts? Do you share code?
+
+
+
+
+
+
+- Sending e-Mails with lengthy attachments?
+
+But let's assume we have done the first step and have created a repository (on Github). We cloned it on our local machine.
+We added some data, we added a little script. 
+
+Have you heard of dependency hell? 
+
+Assume you send some code to Christian. Do you think Christian would be happy to debug your code in case it's not running on his machine?
+Why is it not running? 
+
+
