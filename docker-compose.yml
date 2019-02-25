@@ -1,9 +1,14 @@
 version: '3.6'
+
 services:
   jupyter:
      build:
        context: .
        dockerfile: ./binder/Dockerfile
      volumes:
+       # share work folder with the home folder of the jovyan user
        - ./work:/home/jovyan/work
+       # share read-only the config file for the Jupyter server
        - ./jupyter_notebook_config.py:/etc/jupyter/jupyter_notebook_config.py:ro
+
+     # there is no need to specify the command. This is inherited from the Dockerfile
