@@ -11,3 +11,4 @@ RUN conda install -y -c conda-forge \
 
 # copy your work into the image
 COPY ./work /home/${NB_USER}/work
+COPY ./jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
