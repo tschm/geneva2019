@@ -1,13 +1,23 @@
-# Use the Jupyter stack
-FROM jupyter/minimal-notebook:45b8529a6bfc
+# Set the base image to beakerx
+FROM beakerx/beakerx:latest
 
-# This is needed for beakerx
-RUN conda config --env --add pinned_packages 'openjdk>8.0.121'
+# set the user back to root to install further packages
+USER root
 
-# Install packages such as rise, pandas, cvxpy, ...
-RUN conda install -y -c conda-forge \
-    rise=5.4.1 pandas=0.24.1 cvxpy=1.0.14 beakerx=1.3.0 ipywidgets=7.4.2 && \
-    conda clean -y --all
+# copy over the requirements file (links to our private github repositories)
+COPY requirements.txt requirements.txt
 
-# copy your work into the image
-COPY ./work /home/${NB_USER}/work
+# copy over the config file (contains the hashed password)
+COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
+
+# install our packages (which subsequently link to sqlalchemy, etc.)
+# RUN /opt/conda/envs/beakerx/bin/pip install --upgrade pip
+RUN /opt/conda/envs/beakerx/bin/pip install --no-cache-dir  -r requirements.txt && rm requirements.txt
+
+# you need to specify the environemtn
+RUN conda install -y -n beakerx -c conda-forge rise=5.4.1
+
+# set the user back to NB_USER defined in Dockerfile for beakerx/beakerx
+USER $NB_USER
+
+COPY work $HOME/work
