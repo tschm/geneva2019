@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-echo "http://localhost:9016"
-docker-compose run -p "9016:8888" jupyter
+source .env
+echo "http://localhost:${PORT}"
+docker-compose up jupyter
