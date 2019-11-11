@@ -1,5 +1,5 @@
 # Use the Jupyter stack
-FROM lobnek/jupyter:v2.8
+FROM tschm/docker:release-0.4
 
 # copy your work into the image
-COPY --chown=beakerx:beakerx ./work /home/${NB_USER}/work
+COPY --chown=jovyan:100 ./work /home/jovyan/work
