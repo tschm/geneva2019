@@ -6,8 +6,8 @@ services:
        context: .
        dockerfile: ./binder/Dockerfile
      ports:
-       - ${PORT}:8888
+       - 9016:8888
      volumes:
-       - ./work:/home/${NB_USER}/work
+       - ./work:/home/jovyan/work
 
      # there is no need to specify the command. This is inherited from the Dockerfile

@@ -3,12 +3,9 @@ PROJECT_VERSION := 0.1
 
 SHELL := /bin/bash
 IMAGE := tschm/geneva2019
+PORT := 9016
 
-# needed to get the ${PORT} environment variable
-include .env
-export
-
-.PHONY: help build jupyter tag hub slides
+.PHONY: help build jupyter tag hub
 
 
 .DEFAULT: help
@@ -30,6 +27,10 @@ jupyter: build
 	echo "http://localhost:${PORT}"
 	docker-compose up jupyter
 
+jupyterlab: build
+	echo "http://localhost:${PORT}/lab"
+	docker-compose up jupyter
+
 tag:
 	git tag -a ${PROJECT_VERSION} -m "new tag"
 	git push --tags
@@ -40,7 +41,3 @@ hub: tag
 	docker tag ${IMAGE}:latest ${IMAGE}:${PROJECT_VERSION}
 	docker push ${IMAGE}:${PROJECT_VERSION}
 	docker rmi -f ${IMAGE}:${PROJECT_VERSION}
-
-slides:
-	mkdir -p artifacts
-	cp -r work/* artifacts
